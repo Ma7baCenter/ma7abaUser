@@ -17,7 +17,7 @@ import {
   tap,
   throwError,
 } from 'rxjs';
-import { Iproduct } from '../Moduels/iproduct';
+import { Iproduct, Iproducts } from '../Moduels/iproduct';
 import { Icatagory } from '../Moduels/icatagory';
 import { Usertoken } from '../Moduels/usertoken';
 import { Iuser } from '../Moduels/iuser';

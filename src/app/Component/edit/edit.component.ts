@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { Iproduct } from '../../Moduels/iproduct';
+import { Iproduct, Iproducts } from '../../Moduels/iproduct';
 import { CommonModule, CurrencyPipe, Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../Services/product.service';
