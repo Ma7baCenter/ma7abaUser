@@ -1,0 +1,25 @@
+<h1 class="text-center bg-warning text-primary">catagory </h1>
+<hr>
+<div class="container w-75 ">
+<div class="row justify-content-center  ">
+<table class="table" >
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">name</th>
+        <th scope="col">image</th>
+        <!-- <th scope="col">subname</th>
+        <th scope="col">Details</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pro of catagorylist">
+        <td>{{pro.cat_Id}}</td>
+        <td>{{pro.namecat}}</td>
+        <td><img style="width: 150px;" [src]="pro.img"></td>
+    </tr>
+      
+    </tbody>
+  </table>
+</div></div>
+

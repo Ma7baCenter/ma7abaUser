@@ -1,0 +1,62 @@
+<div class="card-body">
+    <div class="row">
+      <div class="col-3">
+        <input type="text" class="form-control" [(ngModel)]="filterObj.item" placeholder="Search By Name">
+      </div>
+      <div class="col-3">
+        <input type="number" class="form-control" [(ngModel)]="filterObj.suppliersId" placeholder="Search By Sub">
+      </div>
+      <div class="col-3">
+        <input type="number" class="form-control" [(ngModel)]="filterObj.catagorgsId" placeholder="Search By catagory">
+      </div>
+      <div class="col-3">
+        <!-- <app-my-button [text]="'Search'" [btnClass]="'btn-sm btn-success'" (onBtnClick)="filetrCandidates($event)"> </app-my-button> -->
+        
+        <button class="btn btn-sm btn-success" (click)="filetrCandidates('')">Search</button>
+      </div>
+    </div>
+    </div>
+    <div class="container w-50 ">
+        <div class="row justify-content-center  ">
+        <table class="table" >
+            <thead>
+              <tr>
+                <th scope="col">name</th>
+                <th scope="col">price</th>
+                <th scope="col">catname</th>
+                <!-- <th scope="col">subname</th> -->
+                <th scope="col">Details</th>
+                <th scope="col">Edit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pro of productslist">
+                <td>{{pro.name}}</td>
+                <td>{{pro.price}}</td>
+                <td>{{pro.cat_Name}}</td>
+                <!-- <td>{{pro.sub_Name}}</td> -->
+                <td>
+                  <a name="" id="" class="btn btn-success"
+        [routerLink]="['/products/' , pro.product_Id]" role="button">Details</a></td>
+                <td>
+                  <a name="" id="" class="btn btn-success"
+        routerLink="/product/edit/{{pro.product_Id}} " role="button">Edit</a></td>
+               
+              </tr>
+              
+            </tbody>
+          </table>
+          
+        </div>
+        <div class="row">
+       <div class="col-3">
+        <a class="btn btn-warning" >{{filterObj.pg}}</a>
+       </div>
+       <div class="col-3">
+        <a *ngIf="filterObj.pg>1" class="btn btn-primary" (click)="onPrevious()">prev</a>
+       </div>
+       <div class="col-3">
+        <a *ngIf="productslist.length>=8" class="btn btn-success" (click)="onNext()">next</a>
+       </div>
+        </div>
+        </div>
