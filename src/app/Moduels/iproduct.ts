@@ -10,12 +10,15 @@ export interface Iproduct {
     youtubeLink:string;
     price:number;
     quantity?:number;
-    images?: string[];
-    //colors?: string[];
+    images?: IProductImage[];    //colors?: string[];
     //file?:File;
     cat_Name?:string;
     sub_Name?:string;
     cat_Id?:number;
     sup_Id?:number;
    // selectedColor?: string   ;
+}
+export interface IProductImage {
+  id: number;
+  image: string;
 }

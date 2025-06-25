@@ -48,7 +48,7 @@ export class PagesproductsComponent {
 
   filetrCandidates(hany:any) {
     this.httpclient.get
-    (`https://localhost:44380/api/Product/Num?catagorgsId=${this.filterObj.catagorgsId}&suppliersId=${this.filterObj.suppliersId}
+    (`https://ma7aba.bsite.net/api/Product/Num?catagorgsId=${this.filterObj.catagorgsId}&suppliersId=${this.filterObj.suppliersId}
     &pg=${this.filterObj.pg}&item=${this.filterObj.item}`)
     .subscribe((res:any)=> {
       this.productslist = res;
@@ -61,20 +61,21 @@ export class PagesproductsComponent {
   }
 
 
-delete(id:number) {
-  console.log(id);
-  alert("you are sure delete ");
-  const observer={
-    next: (prd:Iproduct) => {
-      alert("Product delete Successfuly"); // not recommended
-      // Use instead Toast (snackbar: https://material.angular.io/components/snack-bar/overview), BS Alert,...
-      this.router.navigateByUrl('/product/add');
-    },
-    error: (err:Error)=>{alert(err.message)}
+delete(id: number) {
+  if (confirm("هل أنت متأكد أنك تريد حذف هذا المنتج؟")) {
+    this.prdService.deleteProduct(id).subscribe({
+      next: () => {
+        alert("تم حذف المنتج بنجاح");
+        this.filetrCandidates(''); // إعادة تحميل البيانات
+      },
+      error: (err: Error) => {
+        alert("حدث خطأ أثناء الحذف: " + err.message);
+        console.error(err);
+      }
+    });
   }
-
-  this.prdService.deleteProduct(id).subscribe(observer);
 }
+
 
 
 }

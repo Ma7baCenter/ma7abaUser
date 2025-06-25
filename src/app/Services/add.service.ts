@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class AddService {
   
  private apiUrl = 'https://ma7aba.bsite.net/api/Products'; // تأكد من صحة الرابط
+ //private apiUrl = 'https://localhost:7201/api/Products'; // تأكد من صحة الرابط
 
   constructor(private http: HttpClient) { }
 
