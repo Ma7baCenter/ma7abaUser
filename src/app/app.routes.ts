@@ -25,5 +25,5 @@ export const routes: Routes = [
     { path: 'update', component: UpdateProductComponent },
     { path: 'pages', component: PagesproductsComponent },
 
-{path: '**', component:MasterComponent}
+{path: '*', component:MasterComponent}
 ];
