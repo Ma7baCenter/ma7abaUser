@@ -15,7 +15,7 @@ orders: any[] = [];
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get<any[]>('https://localhost:44380/api/Order/AllOrdersForAdmin')
+    this.http.get<any[]>('https://ma7aba.bsite.net/api/Order/AllOrdersForAdmin')
       .subscribe((data) => {
         this.orders = data;
       });

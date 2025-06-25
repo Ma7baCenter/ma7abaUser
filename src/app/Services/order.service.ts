@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class OrderService {
-  private baseUrl = 'https://localhost:44380/api/Order'; 
+  private baseUrl = 'https://ma7aba.bsite.net/api/Order'; 
   constructor(private http: HttpClient )   { }
 
   sendOrder(orderData: any) {

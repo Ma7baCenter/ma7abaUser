@@ -12,7 +12,7 @@
     <div *ngFor="let cat of catList" (click)="chooseCatID = cat.cat_Id; getSelCat()"
       [class.selected]="chooseCatID === cat.cat_Id" class="cat-circle text-center">
       <!-- <img [src]="cat.imageUrl" alt="{{ cat.namecat }}" /> -->
-      <img [src]="'https://localhost:44380/Category/' + cat.img" alt="{{ cat.namecat }}" />
+      <img [src]="'https://ma7aba.bsite.net/Category/' + cat.img" alt="{{ cat.namecat }}" />
       <div class="cat-name">{{ cat.namecat }}</div>
     </div>
   </div>
@@ -43,7 +43,7 @@
                 off</b>
 
             </div>
-            <img style="width: 100%; height: 180px" [src]="'https://localhost:44380/Images/' + Item.images[0]"
+            <img style="width: 100%; height: 180px" [src]="'https://ma7aba.bsite.net/Images/' + Item.images[0]"
               class="card-img-top" [alt]="Item.name" />
           </div>
         </a>

@@ -107,18 +107,18 @@ export class ProductsService implements OnInit {
   }
   getallcat(): Observable<Icatagory[]> {
     return this.httpclient.get<Icatagory[]>(
-      'https://localhost:44380/api/Cataegory/Index'
+      'https://ma7aba.bsite.net/api/Cataegory/Index'
     );
   }
   getProductByID(prdID: number): Observable<Iproduct> {
     return this.httpclient.get<Iproduct>(
-      `https://localhost:44380/api/Product/Details/${prdID}`
+      `https://ma7aba.bsite.net/api/Product/Details/${prdID}`
     );
   }
   addProduct(newPrd: Iproduct): Observable<Iproduct> {
     return this.httpclient
       .post<Iproduct>(
-        `https://jala44.bsite.net/api/Product/adding `,
+        `https://ma7aba.bsite.net/api/Product/adding `,
         JSON.stringify(newPrd),
         this.httpOption
       )
@@ -140,7 +140,7 @@ export class ProductsService implements OnInit {
   updateProduct(prdID: number, UpdatedPrd: Iproduct): Observable<Iproduct> {
     return this.httpclient
       .put<Iproduct>(
-        `https://jala44.bsite.net/api/Product/edite/${prdID} `,
+        `https://ma7aba.bsite.net/api/Product/edite/${prdID} `,
         JSON.stringify(UpdatedPrd),
         this.httpOption
       )
@@ -148,7 +148,7 @@ export class ProductsService implements OnInit {
   }
   deleteProduct(prdID: number): Observable<any> {
     return this.httpclient
-      .delete<any>(`https://localhost:44380/api/Product/Delete/${prdID} `)
+      .delete<any>(`https://ma7aba.bsite.net/api/Product/Delete/${prdID} `)
       .pipe(retry(2), catchError(this.handleError));
   }
   Register(newuser: Iuser): Observable<Iuser> {
