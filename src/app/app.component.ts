@@ -12,7 +12,7 @@ import { FooterComponent } from "./Component/footer/footer.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent  {
-  title = 'my-app';
+  title = 'المحبة سنتر';
  
  
   
