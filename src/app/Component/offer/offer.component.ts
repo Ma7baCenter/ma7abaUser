@@ -1,24 +1,22 @@
-import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { LoginService } from '../../Services/login.service';
 import { FormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { ToastrService, ToastrModule } from 'ngx-toastr';
+import { Iproduct } from '../../Moduels/iproduct';
+import { HttpClient } from '@angular/common/http';
 import { ProductsService } from '../../Services/product.service';
 import { CartService } from '../../Services/cart.service';
-import { CommonModule } from '@angular/common';
-import { Iproduct } from '../../Moduels/iproduct';
-import { Icatagory } from '../../Moduels/icatagory';
-import { ToastrService, ToastrModule } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-master',
+  selector: 'app-offer',
   standalone: true,
   imports: [FormsModule, CommonModule, ToastrModule ,RouterLink],
-  templateUrl: './master.component.html',
-  styleUrl: './master.component.css',
+  templateUrl: './offer.component.html',
+  styleUrl: './offer.component.css'
 })
-export class MasterComponent {
-  productslist: any[] = [];
+export class OfferComponent {
+productslist: any[] = [];
   y: number = 0;
   filterObj = {
     item: '',
@@ -31,23 +29,19 @@ export class MasterComponent {
  // selectedColor: string = '';
   quantity: number = 1;
   weight: number = 0;
-  catfortest!: Icatagory;
   expandedProductId: number | null = null;
 
-  catList: Icatagory[] = [];
-  chooseCatID: number = 0;
+  
 
   constructor(
     private httpclient: HttpClient,
     private router: Router,
-    private loginservice: LoginService,
     private prdservices: ProductsService,
     private cartService: CartService,
     private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
-    this.loadCategories();
     this.filterProducts('');
   }
   onPrevious() {
@@ -61,12 +55,11 @@ export class MasterComponent {
     this.filterProducts('');
   }
 
-  filterProducts(hany:any): void {
-    this.filterObj.catagorgsId = this.chooseCatID;
+  filterProducts(hany :any): void {
 
     this.httpclient
       .get<Iproduct[]>(
-        `https://ma7aba.bsite.net/api/Product/Num?catagorgsId=${this.filterObj.catagorgsId}&suppliersId=${this.filterObj.suppliersId}&pg=${this.filterObj.pg}&item=${this.filterObj.item}`
+        `https://ma7aba.bsite.net/api/Product/Num?catagorgsId=1000&suppliersId=${this.filterObj.suppliersId}&pg=${this.filterObj.pg}&item=${this.filterObj.item}`
       )
       .subscribe({
         next: (res) => {
@@ -76,24 +69,8 @@ export class MasterComponent {
         error: (err) => console.error('Failed to load products', err),
       });
   }
-  loadCategories(): void {
-    this.prdservices.getallcat().subscribe({
-      next: (categories) => {
-        this.catList = categories;
-        // إضافة خيار "All Categories" إذا لم يكن موجوداً
-        if (!this.catList.some((c) => c.cat_Id === 0)) {
-          this.catList.unshift({ cat_Id: 0, namecat: 'كل المنتجات' ,img:"554.jpg"});
-           this.catList.unshift({ cat_Id: 1000, namecat: ' العروض' ,img:"offer.png"});
-
-        }
-      },
-      error: (err) => console.error('Failed to load categories', err),
-    });
-  }
-  getSelCat(): void {
-    this.filterObj.pg = 1; // إعادة تعيين الصفحة إلى 1
-    this.filterProducts('');
-  }
+  
+ 
   addtocart(event: Iproduct) {
     const productWithColor: Iproduct = {
       ...event,
@@ -141,3 +118,4 @@ export class MasterComponent {
     this.expandedProductId = this.expandedProductId === id ? null : id;
   }
 }
+

@@ -17,6 +17,8 @@ export interface Iproduct {
     sub_Name?:string;
     cat_Id?:number;
     sup_Id?:number;
+     flagWeight? : boolean ,
+    netWeight?:number;
    // selectedColor?: string   ;
 }
 export interface IProductImage {

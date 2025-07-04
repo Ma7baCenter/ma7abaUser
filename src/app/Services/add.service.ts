@@ -33,7 +33,8 @@ export class AddService {
 
     formData.append('Category_Id', productData.Category_Id.toString());
     formData.append('Supplier_Id', (productData.Supplier_Id || 1).toString());
-    
+    formData.append('FlagWeight', productData.FlagWeight ? 'true' : 'false');
+
     // productData.Colors.forEach((color, index) => {
     //   formData.append(`Colors[${index}]`, color);
     // });

@@ -19,14 +19,15 @@ export class EditComponent implements OnInit {
   expandedProductId: number | null = null;
   quantity: number = 1;
   cartProducts: Iproduct[] = [];
+  weight: number = 0;
 
   constructor(
     private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
     private productService: ProductsService,
     private location: Location,
-  private cartService: CartService,
-      private toastr: ToastrService
+    private cartService: CartService,
+    private toastr: ToastrService
   
     
   ) {}
@@ -60,6 +61,7 @@ export class EditComponent implements OnInit {
       ...event,
       //selectedColor: this.selectedColor,
       quantity: this.quantity,
+       ...(event.flagWeight ? { weight: event.netWeight } : {})
     };
 
     // Load cart from localStorage if it exists
@@ -81,12 +83,14 @@ export class EditComponent implements OnInit {
       } else {
         this.cartProducts.push(productWithColor);
         this.cartService.addToCart(productWithColor);
+        this.toastr.success(' المنتج تم اضافته الي سلة المشتريات ');
         localStorage.setItem('cartProducts', JSON.stringify(this.cartProducts));
       }
     } else {
       // First item being added to the cart
       this.cartProducts.push(productWithColor);
       localStorage.setItem('cartProducts', JSON.stringify(this.cartProducts));
+     this.toastr.success(' المنتج تم اضافته الي سلة المشتريات ');
       this.cartService.addToCart(productWithColor);
     }
   }
