@@ -3,6 +3,7 @@
     <p>🧑 الاسم: {{ orders[0].name }}</p>
     <p>📞 الهاتف: {{ orders[0].phone }}</p>
     <p>📍 العنوان: {{ orders[0].address }}</p>
+    <p *ngIf="orders[0].notes != null">📍 التفاصيل: {{ orders[0].notes }}</p>
 </div>
 </div>
 <div *ngFor="let order of orders" class="order-card">
